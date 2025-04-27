@@ -1,4 +1,19 @@
 students= dict()
+def remove(students):
+    full_name = str(input("Введіть ПІБ студента, якого потрібно видалити: "))
+    if full_name in students:
+        del students[full_name]
+        print(f"Студент {full_name} успішно видалений.")
+    else:
+        print(f"Студент з ПІБ {full_name} не знайдений.")
+def sort_students(students):
+    if not students:
+        print("Словник порожній!")
+    else:
+        sorted_students = sorted(students.keys())
+        print("\nСортовані студенти:")
+        for name in sorted_students:
+            print(f"ПІБ: {name}")
 def add(students):
     full_name = str(input("Введіть ПІБ студента = "))
     course = int(input("Введіть курс студента = "))
@@ -23,8 +38,10 @@ def info(students):
             print(f"  {key}: {value}")
         print()
 
-print("Якщо ви бажаєте пререглянути словник введіть -> 1")
-print("Якщо ви бажаєте додати в словник данні введіть -> 2")
+print("Якщо ви бажаєте переглянути словник введіть -> 1")
+print("Якщо ви бажаєте додати в словник дані введіть -> 2")
+print("Якщо ви бажаєте видалити студента з словника введіть -> 3")  # новий пункт
+print("Якщо ви бажаєте переглянути студентів у алфавітному порядку введіть -> 4")  # новий пункт
 print("Якщо ви бажаєте закінчити введіть -> 0")
 while True:
     case = int(input("Введіть пункт меню: "))
@@ -32,5 +49,13 @@ while True:
         info(students)
     elif case == 2:
         add(students)
-    else: break
+    elif case == 3:  # новий пункт
+        remove(students)
+    elif case == 4:  # новий пункт
+        sort_students(students)
+    elif case == 0:
+        print("Завершення програми.")
+        break
+    else:
+        print("Невірний пункт меню! Спробуйте ще раз.")
 
