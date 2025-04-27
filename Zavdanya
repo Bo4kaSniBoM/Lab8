@@ -1,0 +1,36 @@
+students= dict()
+def add(students):
+    full_name = str(input("Введіть ПІБ студента = "))
+    course = int(input("Введіть курс студента = "))
+    group = str(input("Введіть групу студента = "))
+    math = int(input("Введіть оцінку з вищої математики = "))
+    python = int(input("Введіть оцінку з Програмування мовою Python = "))
+    dotnet = int(input("Введіть оцінку з .NET = "))
+    grades = {
+        'Вища математика': math,
+        'Програмування мовою Python': python,
+        'Програмування під платформу .NET': dotnet
+    }
+    students[full_name] = {
+        'Група': group,
+        'Курс': course,
+        'Предмети та оцінки': grades
+    }
+def info(students):
+    for name, data in students.items():
+        print(f"ПІБ: {name}")
+        for key, value in data.items():
+            print(f"  {key}: {value}")
+        print()
+
+print("Якщо ви бажаєте пререглянути словник введіть -> 1")
+print("Якщо ви бажаєте додати в словник данні введіть -> 2")
+print("Якщо ви бажаєте закінчити введіть -> 0")
+while True:
+    case = int(input("Введіть пункт меню: "))
+    if case == 1:
+        info(students)
+    elif case == 2:
+        add(students)
+    else: break
+
